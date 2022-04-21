@@ -24,15 +24,21 @@ def get_candidate(candidate_id):
 
 
 def get_candidates_by_name(candidate_name: str):
+    """
+    Ищет кандидатов по имени, и возвращает список со словарями найденных кандидатов
+    """
     candidates = load_candidates_from_json()
     candidates_by_name = []
     for item in candidates:
-        if candidate_name.lower() == item['name'].lower():
+        if candidate_name.lower() in item['name'].lower().split(' '):
             candidates_by_name.append(item)
     return candidates_by_name
 
 
 def get_candidates_by_skill(skill_name: str):
+    """
+    Ищет кандидатов по скиллу, и возвращает список со словарями найденных кандидатов
+    """
     candidates = load_candidates_from_json()
     candidates_by_skill = []
     for candidate in candidates:
